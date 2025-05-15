@@ -4,6 +4,11 @@ def q1():
     verifique se ele é par ou ímpar. Imprima uma mensagem informando o 
     resultado.
     """
+    num = int(input("Digite um número: "))
+    if num % 2 == 0:
+        print("Par")
+    else:
+        print("Impar")
     pass
 
 
@@ -14,6 +19,11 @@ def q2():
     Para 'texto', imprima 'to'
 
     """
+    from math import ceil
+    texto = input("Digite o texto: ")
+    tamanho = len(texto)
+    meio = ceil(len(texto)/2)
+    print(texto[meio:tamanho])
     pass
 
 def q3():
@@ -60,3 +70,7 @@ def q9():
 
 def q10():
     pass
+
+
+if __name__ == "__main__":
+ q2()
