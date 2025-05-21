@@ -46,6 +46,16 @@ def q4():
      - romulo junior - Romulo Junior
      - ze da manga - Ze da Manga
     """
+    preposicoes = {"da", "de", "do", "das", "dos", "e", "em", "no", "na", "nos", "nas", "a", "o"}
+    nome = input("Digite seu nome em letras minúsculas: ")
+    partes = nome.split()
+    resultado = []
+    for parte in partes:
+        if parte in preposicoes:
+            resultado.append(parte)
+        else:
+            resultado.append(parte[:1].upper() + parte[1:])
+    print(" ".join(resultado))
     pass
 
 def q5():
@@ -76,251 +86,124 @@ def q5():
 
 def q6():
     """
-Periodicamente as crianças brasileiras devem tomar vacinas que as protegem de diversas doenças. Escrever um programa para ler o ano em que a criança toma a 1a dose e a periodicidade (intervalo em anos) da vacina e exibir em que outros anos a criança deve tomar as próximas doses desta vacina, sabendo que são 4(quatro) doses ao total.
+Periodicamente as crianças brasileiras devem tomar vacinas que as protegem de diversas doenças.
+Escrever um programa para ler o ano em que a criança toma a 1a dose e a periodicidade
+(intervalo em anos) da vacina e exibir em que outros anos a criança deve tomar as próximas doses
+desta vacina, sabendo que são 4(quatro) doses ao total.
 
-Veja abaixo os exemplos de entrada e saída esperadas.
-
-[Referência](https://www.thehuxley.com/problem/699?quizId=4536)
-
-### Formato de entrada
-
-O usuário deve digitar um inteiro N.
-O usuário deve digitar um inteiro M.
-
-### Formato de saída
-
-O programa deve exibir V, X, Y, Z
-
-
-### Exemplo 1:
-
-Entrada:
-
-- 2016
-- 4
-
-Saída:
-
-- 2020 2024 2028 2032
-
-### Exemplo 2:
-
-Entrada:
-
-- 1999
-- 1
-
-Saída:
-
-- 2000 2001 2002 2003
 """
+    anoInicial = int(input("Ano da 1ª dose: "))
+    intervalo = int(input("Periodicidade (em anos): "))
+    for i in range(1, 4):
+        print(f"{i+1}ª dose: {anoInicial + i * intervalo}")
     pass
 
 def q7():
     
     """
-Faça um programa que leia uma sequencia de números e indique se eles são primos ou não.  Você deve parar ao ler o número -1.
+Faça um programa que leia uma sequencia de números e indique se eles são primos ou não.
+Você deve parar ao ler o número -1.
 
-[Referência](https://www.thehuxley.com/problem/972?quizId=4457)
-
-### Formato de entrada
-
-Você irá receber uma sequência de números. A entrada termina quando o número lido for -1.
-
-### Formato de saída
-
-Para cada número lido você deve imprimir Não caso o número não seja primo ou Primo caso seja.
-
-### Exemplo 1:
-
-Entrada:
-
-- 5
-- 4
-- 6
-- -1
-
-Saída:
-
-- Primo
-- Não
-- Não
 """
+def primo(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+while True:
+    numero = int(input("Digite um número (-1 para sair): "))  
+    if numero == -1:
+        print("Encerrando o programa.")
+        break
+    if primo(numero):
+        print(f"{numero} é primo.")
+    else:
+        print(f"{numero} não é primo.")
     pass
 
 def q8():
     """
-Valquíria trabalha em uma padaria e foi roubada ontem. Seus clientes ficaram com pena e resolveram organizar uma vaquinha para comprar um novo celular para ela. Escreva um programa que receba como entrada o valor doado por cada cliente, até que seja informado um valor negativo, e exiba o total arrecadado e o valor médio doado por eles.
+Valquíria trabalha em uma padaria e foi roubada ontem.
+Seus clientes ficaram com pena e resolveram organizar uma vaquinha para comprar um novo celular para ela.
+Escreva um programa que receba como entrada o valor doado por cada cliente,
+até que seja informado um valor negativo, e exiba o total arrecadado e o valor médio doado por eles.
 
-[Referência](https://www.thehuxley.com/problem/465?quizId=4457)
-
-### Formato de entrada
-
-Vários valores reais, até que seja informado um negativo
-
-
-### Formato de saída
-
-Dois valores reais, com duas casas decimais cada um
-
-Atenção para a sequência indicada na descrição
-
-### Exemplo 1:
-
-Entrada:
-
-- 2.5
-- 5.0
-- 3.2
-- -4
-
-Saída:
-
-- 10.70
-- 3.57
 """
+    total = 0
+    quantidade = 0
+    while True:
+        valor = float(input("Digite o valor doado (negativo para encerrar): "))
+        if valor < 0:
+            break
+        total += valor
+        quantidade += 1
+    if quantidade == 0:
+        print("Nenhuma doação recebida.")
+    else:
+        media = total / quantidade
+        print(f"Total arrecadado: {total:.2f}")
+        print(f"Valor médio doado: {media:.2f}")
     pass
 
 def q9():
     """
-A Locadora de Veículos Eudora lançou uma grande promoção esse mês: pagando apenas R$ 90 por diária, o cliente pode alugar um carro de passeio. Para cada diária, o cliente recebe uma cota de quilometragem de 100 Km. Cada quilômetro a mais custará uma taxa extra de R$ 12.
+A Locadora de Veículos Eudora lançou uma grande promoção esse mês: pagando apenas R$ 90 por diária,
+o cliente pode alugar um carro de passeio. Para cada diária,
+o cliente recebe uma cota de quilometragem de 100 Km.
+Cada quilômetro a mais custará uma taxa extra de R$ 12.
 
-Escreva um programa que receba como entrada a quantidade de dias e a quilometragem total rodada por um cliente dessa locadora e exiba o valor total a ser pago com duas casas decimais.
+Escreva um programa que receba como entrada a quantidade de dias e a quilometragem total rodada por um
+cliente dessa locadora e exiba o valor total a ser pago com duas casas decimais.
 
-[Referência](https://www.thehuxley.com/problem/445?quizId=4276)
-
-### Formato de entrada
-
-Dois valores inteiros, separados por uma quebra de linha
-
-
-
-### Formato de saída
-
-Um valor real com duas casas decimais
-
-
-
-### Exemplo 1:
-
-Entrada:
-
-- 1
-- 80
-
-Saída:
-
-- 90.00
-
-### Exemplo 2:
-
-Entrada:
-
-- 0
-- 80
-
-Saída:
-
-- Valor inválido
-
-### Exemplo 3:
-
-Entrada:
-
-- 1
-- 0
-
-Saída:
-
-- 90.00
 """
+    dias = int(input("Quantidade de dias: "))
+    km = float(input("Quilometragem total rodada: "))
+
+    diaria = 90
+    cotaKm = 100 * dias
+    extraKm = max(0, km - cotaKm)
+    valor_total = dias * diaria + extraKm * 12
+    print(f"{valor_total:.2f}")
     pass
 
 def q10():
     """
-Faça um programa para converter um valor de temperatura em uma escala de mediada definida pelo usuário para as outras escalas de medida.
+Faça um programa para converter um valor de temperatura em uma escala de mediada definida pelo
+usuário para as outras escalas de medida.
 
-Se o usuário fornecer uma temperatura em graus Celsius, imprima a mesma temperatura em Fahrenheit e Kelvin
-Se o usuário fornecer uma temperatura em graus Fahrenheit, imprima a mesma temperatura em Celsius e Kelvin
-Se o usuário fornecer uma temperatura em graus Kelvin, imprima a mesma temperatura em Fahrenheit e Celsius
+Se o usuário fornecer uma temperatura em graus Celsius,
+imprima a mesma temperatura em Fahrenheit e Kelvin
+Se o usuário fornecer uma temperatura em graus Fahrenheit,
+imprima a mesma temperatura em Celsius e Kelvin
+Se o usuário fornecer uma temperatura em graus Kelvin,
+imprima a mesma temperatura em Fahrenheit e Celsius
 
-[Referência](https://www.thehuxley.com/problem/1080?quizId=4225)
-
-### Formato de entrada
-
-Uma escala de medida de temperatura ("C", "F" ou "K")
-
-Um valor de temperatura a ser convertido
-
-Esse valor deve obedecer os seguintes valores mínimos (float):
-Celsius: t >= -273.15
-Fahrenheit: t >= -459,67
-Kelvin: t >= 0.0
-Se o usuário fornecer um valor menor que esses para cada temperatura, imprima uma mensagem de erro
-"Valor de temperatura abaixo do minimo"
-Não há limite máximo de temperatura
-
-
-### Formato de saída
-
-Se o usuário fornecer uma temperatura em graus Celsius, imprima a mesma temperatura em Fahrenheit e Kelvin
-Se o usuário fornecer uma temperatura em graus Fahrenheit, imprima a mesma temperatura em Celsius e Kelvin
-Se o usuário fornecer uma temperatura em graus Kelvin, imprima a mesma temperatura em Fahrenheit e Celsius
-Se o usuário fornecer um valor menor que esses para cada temperatura, imprima uma mensagem de erro
-"Valor de temperatura abaixo do minimo"
-
-![Tabela de Conversão](https://www.infoescola.com/wp-content/uploads/2010/01/conversao-de-escalas-termometricas-tabela-600x250.jpg)
-
-### Exemplo 1:
-
-Entrada:
-
-- F
-- 34.0
-
-Saída:
-
-- 1.11 C
-- 274.26 K
-
-### Exemplo 2:
-
-Entrada:
-
-- K
-- -8.0
-
-Saída:
-
-- Valor de temperatura abaixo do minimo
-
-
-### Exemplo 3:
-
-Entrada:
-
-- K
-- 29.0
-
-Saída:
-
-- -244.15 C
-- -407.47 F
-
-### Exemplo 3:
-
-Entrada:
-
-- C
-- -237.0
-
-Saída:
-
-- -394.60 F
-- 36.15 K
 """
+    valor = float(input("Digite o valor da temperatura: "))
+    escala = input("Digite a escala (C para Celsius, F para Fahrenheit, K para Kelvin): ").strip().upper()
+
+    if escala == "C":
+        f = valor * 9/5 + 32
+        k = valor + 273.15
+        print(f"Fahrenheit: {f:.2f}")
+        print(f"Kelvin: {k:.2f}")
+    elif escala == "F":
+        c = (valor - 32) * 5/9
+        k = c + 273.15
+        print(f"Celsius: {c:.2f}")
+        print(f"Kelvin: {k:.2f}")
+    elif escala == "K":
+        c = valor - 273.15
+        f = c * 9/5 + 32
+        print(f"Celsius: {c:.2f}")
+        print(f"Fahrenheit: {f:.2f}")
+    else:
+        print("Escala inválida.")
     pass
 
 
 if __name__ == "__main__":
- q5()
+ q6()
